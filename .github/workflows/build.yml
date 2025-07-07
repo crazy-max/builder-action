@@ -89,6 +89,7 @@ jobs:
         with:
           tags: ${{ steps.meta.outputs.tags }}
           outputs: type=image,oci-artifact=true,push=${{ inputs.push }}
+          sbom: true
           github-token: ${{ secrets.github-token || github.token }}
       -
         name: Install cosign
