@@ -44,7 +44,7 @@ on:
       build-platforms:
         type: string
         description: "List of target platforms for build"
-        required: true
+        required: false
     secrets:
       login-username:
         description: 'Username used to log against the Docker registry'
