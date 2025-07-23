@@ -41,6 +41,10 @@ on:
         description: "Specifies whether the given registry is ECR (auto, true or false)"
         default: 'auto'
         required: false
+      build-platforms:
+        type: string
+        description: "List of target platforms for build"
+        required: true
     secrets:
       login-username:
         description: 'Username used to log against the Docker registry'
@@ -88,6 +92,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           tags: ${{ steps.meta.outputs.tags }}
+          platforms: ${{ inputs.build-platforms }}
           outputs: type=image,oci-artifact=true,push=${{ inputs.push }}
           sbom: true
           github-token: ${{ secrets.github-token || github.token }}
