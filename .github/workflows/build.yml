@@ -106,4 +106,5 @@ jobs:
           for tag in ${TAGS}; do
             images+="${tag}@${DIGEST} "
           done
+          set -x
           cosign -d sign --recursive --yes ${images}
